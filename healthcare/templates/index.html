@@ -1,0 +1,163 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCare</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://kit.fontawesome.com/2482476ed2.js" crossorigin="anonymous"></script>
+</head>
+{% block content %}
+<body>
+        <div class="head">
+            <div class="logo">HealthCare</div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'about'%}">About</a></li>
+                    <li><a href="#" onclick="open_overlay()" ">Contact</a></li>
+                    <li><a href="#" onclick="open_update_overlay()" >Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+              <img src="https://images.pexels.com/photos/305565/pexels-photo-305565.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:100%; height:400px;">
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="https://images.pexels.com/photos/3758756/pexels-photo-3758756.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:100%; height:400px;">
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="https://images.pexels.com/photos/4225920/pexels-photo-4225920.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:100%; height:400px;">
+
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            
+            </div>
+            <br>
+            
+            <div style="text-align:center">
+              <span class="dot" onclick="currentSlide(1)"></span> 
+              <span class="dot" onclick="currentSlide(2)"></span> 
+              <span class="dot" onclick="currentSlide(3)"></span> 
+            </div>
+    <main>
+        <div class="mainoperation">
+            <div class="infoabout">
+                <h1>Let us take care of you for a change</h1>
+                <p>If you feel sick and you need a doctor to consult no need to worry about going out to the hospital, you can consult with the doctor online and get your medicine at you door step just by clicking the the button below.</p>
+            </div>
+            <div class="operation">
+                <div class="each_div">
+                    <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:22em; height:20em;"alt="">
+                    <a href="{% url 'appointment' %}" id="myButton">Appointment</a>
+                </div>
+                <div class="each_div">
+                    <img src="https://images.pexels.com/photos/4021779/pexels-photo-4021779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:22em; height:20em;"alt="">
+                    <a id="myButton1">Find a Doctor</a>
+                </div>
+                <div class="each_div">
+                    <img src="https://images.pexels.com/photos/5795/medicine-thermometer-tablets-pills.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:22em; height:20em;"alt="">
+                    <a href="{% url 'medicine' %}" id="myButton2">Medicine</a>
+                </div>
+            </div>
+        </div>
+        <div class="blog">
+            {% for post in posts %}
+            <div class="blog_type">
+                
+                <div class="image">
+                    <img src="https://images.pexels.com/photos/4546132/pexels-photo-4546132.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"alt="">
+                </div>
+                <div class="blogdetails">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.content|slice:"0:199" }}
+                    </p>
+                    <a href="blogpost/{{ post.id }}">Read more</a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    <div class="overlay" id="overlay" >
+        <div class="formation">
+            <div class="close" onclick="close_overlay()">X</div>
+            <h3>CONTACT</h3>
+            <form action="addContact/" method="POST" >{% csrf_token %}
+                <input type="text" name="name" id="" placeholder="Name..">
+                <input type="email" name="email" id="" placeholder="Email..">
+                <textarea name="content" placeholder="Message.." id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="Send" onclick="close_overlay()">
+            </form>
+        </div>
+    </div>
+    <div class="overlay" id="overlay-feedback">
+        <div class="formation">
+            <div class="close" onclick="close_update_overlay()">X</div>
+            <h3>FEEDBACK</h3>
+            <form action="addFeedback/" method="POST" >{% csrf_token %}
+                <input type="text" name="name" id="" placeholder="Name..">
+                <input type="email" name="email" id="" placeholder="Email..">
+                <textarea name="content" placeholder="Message.." id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="Send" onclick="close_update_overlay()">
+            </form>
+        </div>
+    </div>
+    <div class="visited">
+        <div  class="hospital"id="doctor">
+            <h2>50</h2>
+            <h3>Doctor</h3>
+        </div>
+        <div class="hospital">
+            <h2>100</h2>
+            <h3>Nurse</h3>
+        </div>
+        <div class="hospital">
+            <h2>3000</h2>
+            <h3>Patient</h3>
+        </div>
+        <div class="hospital"   >
+            <h2>3000</h2>
+            <h3>Visited</h3>
+        </div>
+    </div>
+    {% endblock content %}
+    <footer>
+        <div class="sitemap">
+            <h2>Navigation</h2>
+            <ul id="list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#" onclick="open_overlay()" ">Contact</a></li>
+                <li><a href="#" onclick="open_update_overlay()" >Feedback</a></li>
+            </ul>
+        </div>
+        <div class="privacy">
+            <ul id="list">
+                <li><a href="#">Term&Condition</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Career</a></li>
+                <li><a href="#" >Service</a></li>
+            </ul>
+        </div>
+        <div class="location">
+            <ul id="list">
+                <li><a href="#"><i class="fas fa-map-marker-alt"></i> Avadi 400 Feet Outer Ring Road</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> healthcare@gmail.com</a></li>
+                <li><a href="#"><i class="fas fa-phone"></i> +918734239898</a></li>
+                <li><a href="#" ><i class="fas fa-phone"></i> +918734319898</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="{% static 'app.js' %}"></script>
+</body>
+</html>

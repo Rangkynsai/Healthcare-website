@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block content %}
+    {% if first_name %}
+            <center>
+                <h1 class="h3">THANK YOU</h1>
+                <p class="p">{{first_name}}</p>
+                <p class="p">Your Appoinment has been received!</p>
+                <i class="far fa-check-circle" id="i"></i>
+            </center>
+    {%else%}
+    <form action="" method="POST" id="form">{% csrf_token %}
+        <h1>Book your Appoinment</h1>
+        <input type="text" placeholder="First Name" name="first_name">
+        <input type="text" placeholder="Last Name" name="last_name">
+        <input type="text" placeholder="Phone No." name="phone_no">
+        <input type="email" name="email" id="" placeholder="Email">
+        <label for="">Doctor</label>
+        <select name="options" id="doctor">
+            <option value="Dr.A">Dr.A</option>
+            <option value="Dr.B">Dr.B</option>
+        </select>
+        <label for="date_1">Date</label>
+        <input type="date" name="date_1" id="" placeholder="Date" >
+        <label for="time_1">Time</label>
+        <input type="time" name="time_1" id="">
+        <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+{% endblock content%}

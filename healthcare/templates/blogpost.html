@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="blogPost">
+    <div class="article">
+        <img id="art" src="{{ context.images.url }}" alt="">
+        <h6>Posted on {{ context.date_time|date:"d F Y" }}</h6>
+        <h1 class="main-title">{{ context.title }}</h1>
+        <p class="paragraph">{{ context.content }}</p>
+    </div>
+    <!--<div class="comment">
+        <h2 class="coment">Comment</h2>
+        <form action="#" method="POST">{% csrf_token %}
+            <input type="email" name="mail" id="email" placeholder="Email...">
+            <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Comment..."></textarea>
+            <input type="submit" value="Send">
+        </form>
+    </div>-->
+</div>
+
+{% endblock content%}

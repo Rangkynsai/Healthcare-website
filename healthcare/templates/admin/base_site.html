@@ -1,0 +1,31 @@
+{% extends 'admin/base.html' %} 
+{% load static %}
+{% block branding %}
+<h1>Healthcare Administrator</h1>
+{% endblock %}
+{% block extrastyle %}
+<style>
+    #header {
+    background: #002651;
+    color: #fff;
+}
+.module h2, .module caption, .inline-group h2 {
+    background: #ff304f;
+    color: #fff;
+}
+#content-related .module h2 {
+    background-color:#002651;
+    color:#fff;
+}
+.dashboard #content {
+    width: 50em;
+}
+.submit-row input{
+    background-color: #ff304f;
+    width:100%;
+}
+.submit-row {
+    padding: 0em !important ;
+}
+</style>
+{% endblock %}
