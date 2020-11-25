@@ -385,3 +385,13 @@ center{
 .p{
   font-size: 1.3em;
 }
+.main-about{
+  max-width:70em;
+  height:auto;
+  padding:2em;
+  margin:1em auto;
+}
+.main-about > p{
+  font-size: 2rem;
+ text-align: justify;
+}
