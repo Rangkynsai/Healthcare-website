@@ -23,10 +23,10 @@ def book_appointment(request):
         #send mail
         messages = first_name+" "+last_name+" has booked an appointment on "+date_1+" at "+time_1+" with "+options+" Thankyou"
         send_mail(
-            'Appointment',#subject
-            messages,#message
-            email,#from mail
-            ['vtu10669@veltechuniv.edu.in'],#to email
+            'Appointment',
+            messages,
+            email,
+            ['vtu10669@veltechuniv.edu.in'],
             fail_silently=False,)
         
         return render(request,'appointment.html',{'first_name':first_name})
@@ -47,6 +47,19 @@ def medi(request):
         return render(request,'medicine.html',{'name':name})
     else:
         return render(request,'medicine.html')
+
+def Doct(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        doc_store = {'headache':'Dr.A','stomach pain':'Dr.B','pain in join':'Dr.C'}
+        if name in doc_store:
+            finding = doc_store[name]
+            print(finding)
+            return render(request,'doctor.html',{'name':finding})
+        return render(request,'doctor.html')
+    else:
+        return render(request,'doctor.html')
+
 def AddContact(request):
     name = request.POST['name']
     email = request.POST['email']

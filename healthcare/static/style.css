@@ -383,7 +383,7 @@ center{
   text-align: center;
 }
 .p{
-  font-size: 1.3em;
+  font-size: 1.8em;
 }
 .main-about{
   max-width:70em;
@@ -394,4 +394,8 @@ center{
 .main-about > p{
   font-size: 2rem;
  text-align: justify;
+}
+.final_h3{
+  margin-top:1em !important;
+  font-size:3em !important;
 }

@@ -62,7 +62,7 @@
                 </div>
                 <div class="each_div">
                     <img src="https://images.pexels.com/photos/4021779/pexels-photo-4021779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:22em; height:20em;"alt="">
-                    <a id="myButton1">Find a Doctor</a>
+                    <a href="{% url 'doct' %}"id="myButton1">Find a Doctor</a>
                 </div>
                 <div class="each_div">
                     <img src="https://images.pexels.com/photos/5795/medicine-thermometer-tablets-pills.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:22em; height:20em;"alt="">
@@ -130,7 +130,7 @@
             <h3>Visited</h3>
         </div>
     </div>
-    {% endblock content %}
+    
     <footer>
         <div class="sitemap">
             <h2>Navigation</h2>
@@ -158,6 +158,7 @@
             </ul>
         </div>
     </footer>
+    {% endblock content %}
     <script src="{% static 'app.js' %}"></script>
 </body>
 </html>

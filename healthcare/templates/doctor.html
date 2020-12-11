@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block content %}
+{% if name %}
+        <center>
+            <h1 class="h3">You can consult with </h1>
+            <p class="p">{{name}}</p>
+            <h3 class="final_h3">Thankyou</h3>
+    {%else%}
+<form action="" id="form" method="POST">{% csrf_token %}
+        <h1>Find a Doctor</h1>
+        <input type="text" name="name" id="" placeholder="Sickness">
+        <input type="submit" value="Submit" >
+    </form>
+    {% endif %}
+{% endblock content%}
